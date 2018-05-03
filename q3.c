@@ -43,9 +43,16 @@ void print_array(int array[], int n){
   printf("\n");
 }
 
-void optimize_array(int array[], int n, int newarray[], int max){
-  int i, j, min;
-  min = array[0];
+void init_array(int array[], int n){
+  int i;
+  for(i = 0; i < n; i++){
+    array[i] = 0;
+  }
+}
+
+void optimize_array(int array[], int n, int newarray[], int min, int max){
+  int i, j;
+  init_array(newarray, max);
   for(i = 0, j = min; i < n; i++){ //array
     while(array[i] > j){
       newarray[++j]=newarray[j-1];     
@@ -81,10 +88,11 @@ void forcia_workshop(void){
   get_array(inputArray, n);
   get_array(queryArray, q * 2);
   quick_sort(inputArray, n);
-  int max;
-  max=inputArray[n] + 1;
+  int min, max;
+  min = inputArray[0];
+  max = inputArray[n] + 1;
   int optimizedArray[max];
-  optimize_array(inputArray, n, optimizedArray, max);
+  optimize_array(inputArray, n, optimizedArray, min, max);
   print_answer(optimizedArray, queryArray, q);
 }
 
