@@ -59,6 +59,13 @@ int search(int array[], int min, int max){
   return array[max]-array[min-1];
 }
 
+void get_array(int array[], n){
+  int i;
+  for(i = 0; i < n; i++){
+    array[i] = read_int();
+  }
+}
+
 int main(){
   int array[10]={1,2,3,3,3,3,4,6,6,7};
   int newarray[8]={};
