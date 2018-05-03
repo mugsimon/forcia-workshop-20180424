@@ -59,6 +59,13 @@ int search(int array[], int min, int max){
   return array[max]-array[min-1];
 }
 
+void print_answer(int oarray[], int qarray[], int q){
+  int i;
+  for(i = 0; i < q * 2; i += 2){
+    printf("%d\n", search(oarray, qarray[i], qarray[i+1]));
+  }
+}
+  
 void get_array(int array[], n){
   int i;
   for(i = 0; i < n; i++){
