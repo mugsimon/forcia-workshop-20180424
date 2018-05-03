@@ -58,14 +58,11 @@ void optimize_array(int array[], int n, int newarray[]){
 }
 
 int search(int array[], int min, int max){
-  printf("min=%d, max=%d\n", min, max);//
-  printf("array[%d]=%d, array[%d]=%d, array[%d]=%d\n", min-1, array[min-1], min, array[min], max, array[max]);
   return array[max]-array[min-1];
 }
 
 void print_answer(int oarray[], int min, int max, int qarray[], int q){
   int i, answer;
-  printf("min=%d, max=%d\n", min, max);//
   for(i = 0; i < q * 2; i += 2){
     if(qarray[i]>max){
       answer=0;
@@ -74,7 +71,6 @@ void print_answer(int oarray[], int min, int max, int qarray[], int q){
     }else{
       answer=search(oarray, qarray[i], qarray[i+1]);
     }
-    printf("(%d, %d)=", qarray[i], qarray[i+1]);//
     printf("%d\n", answer);
   }
 }
@@ -85,15 +81,7 @@ void get_array(int array[], int n){
     array[i] = read_int();
   }
 }
-//
-void print_array(int array[], int n){
-  int i;
-  for(i=0;i<n;i++){
-    printf("array[%d]=%d ", i, array[i]);
-  }
-  printf("\n");
-}
-//
+
 void forcia_workshop(void){
   int n, q;
   n = read_int();
@@ -108,9 +96,7 @@ void forcia_workshop(void){
   max = inputArray[n-1];
   newN = max + 1;
   int optimizedArray[newN];
-  optimize_array(inputArray, n, optimizedArray);
-  print_array(optimizedArray, newN);//
-  
+  optimize_array(inputArray, n, optimizedArray); 
   print_answer(optimizedArray, min, max, queryArray, q);
 }
 
