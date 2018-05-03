@@ -55,12 +55,17 @@ void optimize_array(int array[], int n, int newarray[]){
   }         
 }
 
+int search(int array[], int min, int max){
+  return array[max]-array[min-1];
+}
+
 int main(){
   int array[10]={1,2,3,3,3,3,4,6,6,7};
   int newarray[8]={};
   print_array(array, 10);
   optimize_array(array, 10, newarray);
   print_array(newarray, 8);
+  printf("%d\n", search(newarray, 7, 7));
   return 0;
 }
 
