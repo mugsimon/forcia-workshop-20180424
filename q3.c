@@ -32,7 +32,7 @@ void quick_sort2(int array[], int left, int right){
 }
 
 void quick_sort(int array[], int n){
-  quick_sort2(array, 0, n);
+  quick_sort2(array, 0, n-1);
 }
 
 void print_array(int array[], int n){
