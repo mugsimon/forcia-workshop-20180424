@@ -1,22 +1,24 @@
+/* This is the forcia_workshop 20180424 q3 answer by Simon Terazawa */
+
 #include<stdio.h>
 #include<string.h>
 #include<math.h>
 #include<stdlib.h>
 
-int read_int(void){
+int read_int(void){ //read 1 integer
   int input;
   scanf("%d", &input);
   return input;
 }
 
-void swap(int array[], int i, int j){
+void swap(int array[], int i, int j){ //exchange i and j
   int tmp;
   tmp = array[i];
   array[i]=array[j];
   array[j]=tmp;
 }
 
-void quick_sort2(int array[], int left, int right){
+void quick_sort2(int array[], int left, int right){ 
   int lright, i;
   if(left >= right) return;
   swap(array, left, (left + right)/2);
@@ -87,15 +89,14 @@ void forcia_workshop(void){
   n = read_int();
   q = read_int();
   int inputArray[n];
-  int queryArray[q * 2];
+  int queryArray[q * 2]; //q*2 because for min and max
   get_array(inputArray, n);
   get_array(queryArray, q * 2);
   quick_sort(inputArray, n);
   int min, max, newN;
   min = inputArray[0];
   max = inputArray[n-1];
-  newN = max + 1;
-  int optimizedArray[newN];
+  int optimizedArray[max+1]; //index 0 not use
   optimize_array(inputArray, n, optimizedArray); 
   print_answer(optimizedArray, min, max, queryArray, q);
 }
