@@ -23,7 +23,8 @@ void quick_sort2(int array[], int left, int right){
   lright = left;
   for(i = left + 1; i <= right; i++){
     if(array[left] > array[i]){
-      swap(array, ++lright, i);
+      lright++;
+      swap(array, lright, i);
     }
   }
   swap(array, left, lright);
