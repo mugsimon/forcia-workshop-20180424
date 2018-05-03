@@ -50,10 +50,8 @@ void optimize_array(int array[], int n, int newarray[]){
   for(i = 0, j = min; i < n; i++){ //array
     while(array[i] > j){
       newarray[++j]=newarray[j-1];     
-      printf("j=%d ", j);
     }
     newarray[j]++;
-    printf("newarray[j]=%d\n", newarray[j]);
   }         
 }
 
