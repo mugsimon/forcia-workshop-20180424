@@ -44,10 +44,6 @@ void print_array(int array[], int n){
 }
 
 int main(){
-  int a[10]={3,4,8,9,1,2,5,6,0,7}; 
-  print_array(a, 10);
-  quick_sort(a, 10);
-  print_array(a, 10);
   return 0;
 }
 
