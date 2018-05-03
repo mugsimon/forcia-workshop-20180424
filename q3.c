@@ -19,11 +19,12 @@ void swap(int array[], int i, int j){
 void quick_sort2(int array[], int left, int right){
   int lright, i;
   if(left >= right) return;
-  swap(array, left, right);
+  swap(array, left, (left + right)/2);
   lright = left;
   for(i = left + 1; i <= right; i++){
     if(array[left] > array[i]){
-      swap(array, ++lright, i);
+      lright++;
+      swap(array, lright, i);
     }
   }
   swap(array, left, lright);
@@ -32,24 +33,23 @@ void quick_sort2(int array[], int left, int right){
 }
 
 void quick_sort(int array[], int n){
-  quick_sort2(array, 0, n);
+  quick_sort2(array, 0, n-1);
 }
 
-void print_array(int array[], int n){
+void init_array(int array[], int n){
   int i;
   for(i = 0; i < n; i++){
-    printf("array[%d]=%d ", i, array[i]);
+    array[i] = 0;
   }
-  printf("\n");
 }
 
-void optimize_array(int array[], int n, int newarray[]){
-  int i, j, min, max;
-  min = array[0];
-  max = array[n];
-  for(i = 0, j = min; i < n; i++){ //array
+void optimize_array(int array[], int n, int newarray[], int min, int max){
+  int i, j;
+  init_array(newarray, max);
+  for(i = 0, j = min; i < n; i++){ 
     while(array[i] > j){
-      newarray[++j]=newarray[j-1];     
+      j++;
+      newarray[j]=newarray[j-1];     
     }
     newarray[j]++;
   }         
@@ -66,20 +66,32 @@ void print_answer(int oarray[], int qarray[], int q){
   }
 }
   
-void get_array(int array[], n){
+void get_array(int array[], int n){
   int i;
   for(i = 0; i < n; i++){
     array[i] = read_int();
   }
 }
 
+void forcia_workshop(void){
+  int n, q;
+  n = read_int();
+  q = read_int();
+  int inputArray[n];
+  int queryArray[q * 2];
+  get_array(inputArray, n);
+  get_array(queryArray, q * 2);
+  quick_sort(inputArray, n);
+  int min, max;
+  min = inputArray[0];
+  max = inputArray[n-1];
+  int optimizedArray[max+1];
+  optimize_array(inputArray, n, optimizedArray, min, max+1);
+  print_answer(optimizedArray, queryArray, q);
+}
+
 int main(){
-  int array[10]={1,2,3,3,3,3,4,6,6,7};
-  int newarray[8]={};
-  print_array(array, 10);
-  optimize_array(array, 10, newarray);
-  print_array(newarray, 8);
-  printf("%d\n", search(newarray, 7, 7));
+  forcia_workshop();
   return 0;
 }
 
