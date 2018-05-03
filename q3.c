@@ -19,7 +19,7 @@ void swap(int array[], int i, int j){
 void quick_sort2(int array[], int left, int right){
   int lright, i;
   if(left >= right) return;
-  swap(array, left, right);
+  swap(array, left, (left + right)/2);
   lright = left;
   for(i = left + 1; i <= right; i++){
     if(array[left] > array[i]){
