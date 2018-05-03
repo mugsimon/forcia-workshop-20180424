@@ -38,12 +38,31 @@ void quick_sort(int array[], int n){
 void print_array(int array[], int n){
   int i;
   for(i = 0; i < n; i++){
-    printf("%d ", array[i]);
+    printf("array[%d]=%d ", i, array[i]);
   }
   printf("\n");
 }
 
+void optimize_array(int array[], int n, int newarray[]){
+  int i, j, min, max;
+  min = array[0];
+  max = array[n];
+  for(i = 0, j = min; i < n; i++){ //array
+    while(array[i] > j){
+      newarray[++j]=newarray[j-1];     
+      printf("j=%d ", j);
+    }
+    newarray[j]++;
+    printf("newarray[j]=%d\n", newarray[j]);
+  }         
+}
+
 int main(){
+  int array[10]={1,2,3,3,3,3,4,6,6,7};
+  int newarray[8]={};
+  print_array(array, 10);
+  optimize_array(array, 10, newarray);
+  print_array(newarray, 8);
   return 0;
 }
 
