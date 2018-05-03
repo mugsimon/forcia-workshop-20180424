@@ -66,20 +66,31 @@ void print_answer(int oarray[], int qarray[], int q){
   }
 }
   
-void get_array(int array[], n){
+void get_array(int array[], int n){
   int i;
   for(i = 0; i < n; i++){
     array[i] = read_int();
   }
 }
 
+void forcia_workshop(void){
+  int n, q;
+  n = read_int();
+  q = read_int();
+  int inputArray[n];
+  int queryArray[q * 2];
+  get_array(inputArray, n);
+  get_array(queryArray, q * 2);
+  quick_sort(inputArray, n);
+  int max;
+  max=inputArray[n];
+  int optimizedArray[max];
+  optimize_array(inputArray, n, optimizedArray);
+  print_answer(optimizedArray, queryArray, q);
+}
+
 int main(){
-  int array[10]={1,2,3,3,3,3,4,6,6,7};
-  int newarray[8]={};
-  print_array(array, 10);
-  optimize_array(array, 10, newarray);
-  print_array(newarray, 8);
-  printf("%d\n", search(newarray, 7, 7));
+  forcia_workshop();
   return 0;
 }
 
