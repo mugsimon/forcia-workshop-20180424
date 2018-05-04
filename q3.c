@@ -93,7 +93,7 @@ void forcia_workshop(void){
   get_array(inputArray, n);
   get_array(queryArray, q * 2);
   quick_sort(inputArray, n);
-  int min, max, newN;
+  int min, max;
   min = inputArray[0];
   max = inputArray[n-1];
   int optimizedArray[max+1]; //index 0 not use
